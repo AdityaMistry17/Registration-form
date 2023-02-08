@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+       
+
+        fieldset{
+            width: 70%;
+            background-color: yellow;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 20px;
+            padding: 30px;
+            font-family: cursive;
+            font-size: 25px;
+            text-align: center;
+        }
+
+        input{
+            text-align: center;
+        }
+
+       
+    </style>
+
+
+</head>
+<body>
+    <form action="welcome Aditya.html" method="post" onsubmit="return validate()" autocomplete="off">
+        <fieldset>
+            <legend>Registration Form</legend>
+
+            <label for="in1">Username: <input type="text" id="un" placeholder="Enter your Name" maxlength="15"> <br><span></span></label>
+
+            <label for="in2">Password: <input type="text" id="pass" placeholder="Enter your Password" maxlength="8"> <br><span></span> </label>
+
+            <label for="in3">Confirm-Password: <input type="text" id="cpass" placeholder="Confirm your Password" maxlength="8">  <br><span></span> </label>
+
+            <label for="in4">Mobile no:+91 <input type="text" id="mno" placeholder="Enter your Mobile no" maxlength="10">  <br><span></span></label>
+
+            <label for="in5">Email: <input type="text" id="em" placeholder="Enter your Email"><span></span> </label>
+
+        <div>
+            <button type="submit"> Submit</button>
+            <button type="reset"> Reset</button>
+        </div>
+        </fieldset>
+    </form>
+    
+    <script>
+        
+        function validate(){
+            let user = document.getElementById('un').value;
+            let pass = document.getElementById('pass').value;
+            let cpass = document.getElementById('cpass').value;
+            let mob = document.getElementById('mno').value;
+            let email1 = document.getElementById('em').value;
+            let spanmsg = document.querySelectorAll('span');
+            
+            // // validation for username
+            if(user == ""){
+                spanmsg[0].innerHTML = "Fields cannot be empty.";
+                return false;
+            }
+            
+            else if(!isNaN(user)){
+                spanmsg[0].innerHTML = "Invalid inputs numbers are not allowed."
+                return false;
+            }
+            
+            else{
+                spanmsg[0].innerHTML = "";
+            }
+            
+
+            // // validation for password
+            if(pass.length < 8 || pass == ""){
+                spanmsg[1].innerHTML = "Minimum 8 characters are required and it must be combination of uppercase, lowercase, numbers amd symbols."
+                return false;
+            }
+
+            else if(pass.search(/[a-z]/)==-1 || pass.search(/[A-Z]/)==-1 || pass.search(/[0-9]/)==-1 || pass.search(/[@/!/*/$/#/_]/)==-1){
+                spanmsg[1].innerHTML = "Atleast 1 lowercase, 1 uppercase and 1 special character is required.";
+                return false;
+            }
+
+            else{
+                spanmsg[1].innerHTML = "";
+            }
+
+
+            // // validation for confirm password
+            if(cpass == ""){
+                spanmsg[2].innerHTML = "please fill the empty space with your password.";
+                return false;
+            }
+    
+            else if(cpass !== pass){
+                spanmsg[2].innerHTML = "password is not Matching.";
+                return false;
+            }
+    
+            else{
+                spanmsg[2].innerHTML = "";
+            }
+
+
+            // validation for mobile Number
+            if(mob.length < 10 || mob == ""){
+                spanmsg[3].innerHTML = "please type the mobile number.";
+                return false;
+            }
+    
+            else if(isNaN(mob)){
+                spanmsg[3].innerHTML = "only numbers are allowed.";
+                return false;
+            }
+    
+            else{
+                spanmsg[3].innerHTML = "";
+            }
+
+
+            // validation for email
+            if(email1 == ""){
+                spanmsg[4].innerText = "warning! email cannot be empty.";
+                return false;
+            }
+
+            else if(email.indexOf('@')<=1){
+                spanmsg[4].innerHTML = "Warning! invalid email...";
+                return false;
+            }
+            
+            else if(email.charAt(email.length-4) != '.' && email.charAt(email.length-3) != '.'){
+                spanmsg[4].innerHTML = "Warning! invalid email...";
+                return false;
+            }
+
+            else{
+                spanmsg[4].innerHTML = "Valid email";
+                spanmsg[4].style.color = 'red';
+            }
+        }
+
+
+ 
+    </script>
+</body>
+</html>
